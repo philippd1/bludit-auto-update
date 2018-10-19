@@ -1,0 +1,6 @@
+{
+  "plugin-data": {
+    "name": "Auto Update",
+    "description": "Installiert automatisch die neueste Version von Bludit. Klicken Sie auf 'Einstellungen' löst ein automatisches Update aus."
+  }
+}
