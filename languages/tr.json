@@ -1,0 +1,6 @@
+{
+  "plugin-data": {
+    "name": "Bludit için otomatik güncelleme",
+    "description": "Bludit'in en yeni sürümünü otomatik olarak yükler. 'Ayarlar' seçeneğine tıkladığınızda otomatik güncelleme tetiklenir."
+  }
+}
