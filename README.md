@@ -11,3 +11,10 @@
 
 - Plugin for Bludit CMS that does exactly what it sounds like.
 - Automatically update your Bludit version to the newest one available on the Bludit.com website
+
+
+### verified working with:
+- 3.1.0
+- 3.4.0
+
+> feel free to make a PR if you tested it on other versions
