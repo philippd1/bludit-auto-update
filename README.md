@@ -16,5 +16,7 @@
 ### verified working with:
 - 3.1.0
 - 3.4.0
+- 3.5.0
+- 3.7.1
 
 > feel free to make a PR if you tested it on other versions
