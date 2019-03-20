@@ -1,24 +1,5 @@
 <?php
-/*  BACKUP - START  */
-// $rootPath = realpath('.');
-// $zip = new ZipArchive();
-// $zip->open('backup.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
-// $files = new RecursiveIteratorIterator(
-//     new RecursiveDirectoryIterator($rootPath),
-//     RecursiveIteratorIterator::LEAVES_ONLY
-// );
-// foreach ($files as $name => $file) {
-//     if (!$file->isDir()) {
-//         $filePath = $file->getRealPath();
-//         $relativePath = substr($filePath, strlen($rootPath) + 1);
-//         $zip->addFile($filePath, $relativePath);
-//     }
-// }
-// $zip->close();
-/*  BACKUP - END    */
-
-function download($url, $filename)
-{
+function download($url, $filename){
     $content = file_get_contents($url);
     $file = fopen($filename, 'w+');
     fwrite($file, $content);
