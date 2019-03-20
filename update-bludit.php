@@ -1,4 +1,21 @@
 <?php
+/*  ENTIRE BACKUP - START  */
+// $rootPath = realpath('.');
+// $zip = new ZipArchive();
+// $zip->open('backup.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
+// $files = new RecursiveIteratorIterator(
+//     new RecursiveDirectoryIterator($rootPath),
+//     RecursiveIteratorIterator::LEAVES_ONLY
+// );
+// foreach ($files as $name => $file) {
+//     if (!$file->isDir()) {
+//         $filePath = $file->getRealPath();
+//         $relativePath = substr($filePath, strlen($rootPath) + 1);
+//         $zip->addFile($filePath, $relativePath);
+//     }
+// }
+// $zip->close();
+/*  ENTIRE BACKUP - END    */
 function download($url, $filename){
     $content = file_get_contents($url);
     $file = fopen($filename, 'w+');
@@ -83,5 +100,4 @@ function rmrf($dir){
     }
 }
 rmrf('./auto-updater-temp/');
-$html .= "<br>Bludit was updated to '{$bluditVersionDownloaded}'.";
 ?>
