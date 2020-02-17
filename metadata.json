@@ -1,10 +1,10 @@
 {
-    "author": "Philipp Dormann",
-    "email": "philipp.dormann1@gmail.com",
-    "website": "https://philippdormann.de",
-    "version": "1.0",
-    "releaseDate": "2018-10-19",
-    "license": "MIT",
-    "compatible": "3.1",
-    "notes": ""
+	"author": "Philipp Dormann",
+	"email": "philipp.dormann1@gmail.com",
+	"website": "https://philippdormann.de",
+	"version": "2.0.0",
+	"releaseDate": "2020-02-17",
+	"license": "MIT",
+	"compatible": "3.11.0",
+	"notes": ""
 }
