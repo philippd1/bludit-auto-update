@@ -75,9 +75,6 @@ AutoUpdater.get_releases((releases) => {
         <br>
         <button type="button" id="autoupdate_start_update" class="btn btn-primary">Update now! 🚀</button>
 		<div id="update_progress"></div>
-		<hr>
-		<h5>advanced settings</h5>
-        <div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input" id="autoupdater_keep_zip">keep ZIP file</label></div>
         `);
 		$('#autoupdate_start_update').click(() => {
 			$('#AUTOUPDATER_Progress').css('display', 'block');
