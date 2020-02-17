@@ -6,17 +6,12 @@
 [![GitHub stars](https://img.shields.io/github/stars/philippd1/bludit-auto-update.svg?style=flat-square)](https://github.com/philippd1/bludit-auto-update/stargazers)
 ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/philippd1/bludit-auto-update.svg?style=flat-square)
 
+<div align="center">
+  <h1>Bludit AutoUpdate</h1>
+  <sub>Built with 🔥 by <a href="https://github.com/philippd1">philippd1</a></sub>
+</div>
 
-# bludit-auto-update
+---
 
 - Plugin for Bludit CMS that does exactly what it sounds like.
-- Automatically update your Bludit version to the newest one available on the Bludit.com website
-
-
-### verified working with:
-- 3.1.0
-- 3.4.0
-- 3.5.0
-- 3.7.1
-
-> feel free to make a PR if you tested it on other versions
+- Automatically update your Bludit version to the newest release available on https://github.com/bludit/bludit
