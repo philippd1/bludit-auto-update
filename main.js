@@ -14,6 +14,9 @@ let AutoUpdater = {
 			if (json.stable.build > BLUDIT_BUILD) {
 				$('#AUTOUPDATER-new-version').show();
 			}
+			if (json.stable.build == BLUDIT_BUILD) {
+				$('#AUTOUPDATER-newest-version').show();
+			}
 		});
 	},
 	update_done: () => {
@@ -111,9 +114,11 @@ AutoUpdater.get_releases((releases) => {
 									$.post(HTML_PATH_ROOT + 'bl-plugins/bludit-auto-update/perform-update.php', {
 										url: zip_path,
 										tag: AutoUpdater.releases[0].tag_name,
+										name: AutoUpdater.releases[0].name,
 										action_update_language: true,
 										HTML_PATH_ROOT: HTML_PATH_ROOT
 									}).done((data) => {
+										console.log(data);
 										if (data == 'action_update_language-done') {
 											AutoUpdater.current_progress = 5;
 											$.post(
@@ -170,14 +175,17 @@ AutoUpdater.get_releases((releases) => {
 			}, 25);
 		});
 	} else {
-		$('#autoupdater_dynamic_content').html(`
-        <div class="alert alert-info">
-		installed version: <code>${BLUDIT_VERSION} (BUILD ${BLUDIT_BUILD}) (name: "${AutoUpdater.current_version
-			.name}")</code>
-        </div>
-        <div class="alert alert-info">
-		This is the newest version available on GitHub.
-        </div>
-        `);
+		$.get('https://version.bludit.com', (json) => {
+			if (json.stable.build == BLUDIT_BUILD) {
+				$('#autoupdater_dynamic_content').html(`
+				<div class="alert alert-info">
+				Installed version: <code>${BLUDIT_VERSION} (BUILD ${BLUDIT_BUILD}) (name: "${json.stable.codeName}")</code>
+				</div>
+				<div class="alert alert-info">
+				This is the newest version available on GitHub. 🎉
+				</div>
+				`);
+			}
+		});
 	}
 });
