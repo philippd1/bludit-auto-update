@@ -3,9 +3,14 @@ class autoUpdater extends Plugin
 {
 	public function form()
 	{
-		global $Language;
-		include 'auto_update.php';
-		return '<label>This plugin automatically downloads and installs the latest Bludit version offered on the official Bludit site.<br><b>Warning:</b> This will overwrite your bludit installation.</label>';
+		$html  = '';
+		$html .= <<<Bludit_Updater
+		<div id="autoupdater_dynamic_content"></div>
+		Bludit_Updater;
+		$js = file_get_contents(dirname(__FILE__) . '/main.js');
+		$html .= <<<Bludit_Updater
+		<script>{$js}</script>
+		Bludit_Updater;
+		return $html;
 	}
 }
-?>
