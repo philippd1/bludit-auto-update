@@ -15,3 +15,6 @@
 
 - Plugin for Bludit CMS that does exactly what it sounds like.
 - Automatically update your Bludit version to the newest release available on https://github.com/bludit/bludit
+
+### this was tested with
+- `Bludit 3.1.0` - `Bludit 3.11.0`
