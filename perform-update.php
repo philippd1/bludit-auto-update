@@ -30,6 +30,33 @@ function unzip($filename, $extract_location)
         echo 'Error: Unzip failed';
     }
 }
+function xcopy($source, $dest)
+{
+    if (is_file($source)) {
+        // return copy($source, $dest);
+        update_status("copy {$source} to {$dest}");
+        // $myfile = fopen($dest, "w") or die("Unable to open file!");
+        // fwrite($myfile, file_get_contents($source));
+        // fclose($myfile);
+        return true;
+    }
+    if (!is_dir($dest)) {
+        mkdir($dest);
+    }
+
+    $path = "/path/to/files";
+
+    if ($handle = opendir($path)) {
+        while (false !== ($file = readdir($handle))) {
+            if ('.' === $file) continue;
+            if ('..' === $file) continue;
+
+            // do something with the file
+        }
+        closedir($handle);
+    }
+    return true;
+}
 // 
 if (isset($_POST['action_download'])) {
     download($_POST['url'], 'bludit-new.zip');
@@ -49,23 +76,25 @@ elseif (isset($_POST['action_unzip'])) {
 // 
 elseif (isset($_POST['action_update_language'])) {
     update_status("update_language @" . time());
-    // $rootPath = realpath('./auto-updater-temp/' . $_POST['tag'] . '/bl-languages/');
-    // $zip = new ZipArchive();
-    // $zip->open('./bl-languages/temp.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
-    // $files = new RecursiveIteratorIterator(
-    //     new RecursiveDirectoryIterator($rootPath),
-    //     RecursiveIteratorIterator::LEAVES_ONLY
-    // );
-    // foreach ($files as $name => $file) {
-    //     if (!$file->isDir()) {
-    //         $filePath = $file->getRealPath();
-    //         $relativePath = substr($filePath, strlen($rootPath) + 1);
-    //         $zip->addFile($filePath, $relativePath);
-    //     }
-    // }
-    // $zip->close();
-    // unzip('./bl-languages/temp.zip', './bl-languages/');
-    // unlink('./bl-languages/temp.zip');
+
+    $dest_dir = $_POST['HTML_PATH_ROOT'] . "/bl-languages/";
+
+    $files = glob($destination . '*'); // get all file names
+    foreach ($files as $file) { // iterate files
+        unlink($dest_dir . $file); // delete file
+    }
+
+    $src = $_POST['HTML_PATH_ROOT'] . 'auto-updater-temp/' . $_POST['tag'] . '/bl-languages';
+    $destination = $_POST['HTML_PATH_ROOT'] . 'blang';
+    update_status("try copying {$src} to {$destination}");
+
+    $lang_folder = './auto-updater-temp/' . $_POST['tag'] . '/bl-languages/';
+    $files = scandir($lang_folder);
+    foreach ($files as $file) {
+        $myfile = fopen($dest, "w") or die("Unable to open file!");
+        fwrite($myfile, file_get_contents($lang_folder . $file));
+        fclose($myfile);
+    }
     echo "action_update_language-done";
     update_status("update_language done @" . time());
 }
@@ -82,6 +111,7 @@ elseif (isset($_POST['cleanup'])) {
 
     echo "cleanup-done";
     update_status("cleanup done @" . time());
+    update_status("Bludit was successfully upgraded to " . $_POST['tag'] . " @" . time());
 }
 // ---
 elseif (isset($_POST['action_init'])) {
